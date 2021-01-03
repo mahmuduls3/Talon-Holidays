@@ -52,6 +52,28 @@
                     </td>
                 </tr>
                 <tr>
+                    <th scope="row">Package Style</th>
+                    <td>
+                        <select name="package" id="" class="form-control">
+                            <option value="" disabled="disabled">Select Package Style</option>
+                            <option {{ ($location->package) == 'Domestic' ? 'selected' : '' }} value="Domestic">Domestic</option>
+                            <option {{ ($location->package) == 'International' ? 'selected' : '' }} value="International">International</option>
+                        </select>
+                        <span style="color: red;"> @error('package'){{$message}} @enderror </span>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Status</th>
+                    <td>
+                        <select name="status" id="" class="form-control">
+                            <option value="" disabled="disabled">Select Status</option>
+                            <option {{ ($location->status) == 'Normal' ? 'selected' : '' }} value="Normal">Normal</option>
+                            <option {{ ($location->status) == 'Featured' ? 'selected' : '' }} value="Featured">Featured</option>
+                        </select>
+                        <span style="color: red;"> @error('status'){{$message}} @enderror </span>
+                    </td>
+                </tr>
+                <tr>
                     <th scope="row">Edited By</th>
                     <td>
                         <input class="form-control" disabled type="text" name="editedBy" value="{{$location->editedBy}}">

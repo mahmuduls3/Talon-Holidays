@@ -21,6 +21,8 @@ class LocationController extends Controller
             'price' => 'required | max: 5',
             'days' => 'required | max: 2',
             'nights' => 'required | max: 2',
+            'package' => 'required',
+            'status' => 'required'
         ]);
 
         if($validate){
@@ -31,6 +33,8 @@ class LocationController extends Controller
             $location->days = $request->days;
             $location->nights = $request->nights;
             $location->description = $request->description;
+            $location->package = $request->package;
+            $location->status = $request->status;
             $location->editedBy = $request->editedBy;
             $location->save();
             $request->session()->flash('place', $location->place);
@@ -50,6 +54,8 @@ class LocationController extends Controller
             'price' => 'required | max: 5',
             'days' => 'required | max: 2',
             'nights' => 'required | max: 2',
+            'package' => 'required',
+            'status' => 'required'
         ]);
 
         $sessionValue = $request->session()->get('user');
@@ -61,6 +67,8 @@ class LocationController extends Controller
                                   'price' => $request->price,
                                   'days' => $request->days,
                                   'nights' => $request->nights,
+                                  'package' => $request->package,
+                                  'status' => $request->status,
                                   'editedBy' => $sessionValue
                                 ]);
                 return redirect()->route('allLocations');

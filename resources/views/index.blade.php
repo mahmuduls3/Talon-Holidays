@@ -180,6 +180,24 @@
 							<input type="text" name="description" class="form-control"  placeholder="A wonderful place to visit" value="{{old('description')}}" required>
 						</div>
 						<div class="form-group">
+							<label>Package Style</label>
+							<select name="package" id="" class="form-control" required>
+								<option value="" disabled="disabled" selected="selected">Select Package Style</option>
+								<option value="Domestic">Domestic</option>
+								<option value="International">International</option>
+							</select>
+							<span style="color: red;"> @error('package'){{$message}} @enderror </span>
+						</div>
+						<div class="form-group">
+							<label>Status</label>
+							<select name="status" id="" class="form-control" required>
+								<option value="" disabled="disabled" selected="selected">Select Status</option>
+								<option value="Normal">Normal</option>
+								<option value="Featured">Featured</option>
+							</select>
+							<span style="color: red;"> @error('package'){{$message}} @enderror </span>
+						</div>
+						<div class="form-group">
 							<input type="hidden" name="editedBy" class="form-control"  placeholder="" value="{{session('user')}}" required>
 						</div>
 						<div class="text-center">

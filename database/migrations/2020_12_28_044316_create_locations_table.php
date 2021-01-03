@@ -21,6 +21,8 @@ class CreateLocationsTable extends Migration
             $table->unsignedInteger('days');
             $table->unsignedInteger('nights');
             $table->text('description');
+            $table->string('package');
+            $table->string('status');
             $table->string('editedBy');
             $table->timestamps();
         });
