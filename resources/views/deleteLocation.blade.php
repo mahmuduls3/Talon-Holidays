@@ -11,6 +11,11 @@
                     </tr>
                     <tr>
                         <th scope="row">Country</th>
+                        <td>{{$location->image}}</td>
+                        
+                    </tr>
+                    <tr>
+                        <th scope="row">Country</th>
                         <td>{{$location->country}}</td>
                         
                     </tr>

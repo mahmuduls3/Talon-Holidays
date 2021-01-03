@@ -16,6 +16,7 @@ class LocationController extends Controller
     public function addLocation(Request $request)
     {
         $validate = $request->validate([
+            'image' => 'image | required',
             'country' => 'required | min: 4 | max: 255',
             'place' => 'required | min: 4 | max: 255',
             'price' => 'required | max: 5',
@@ -27,6 +28,7 @@ class LocationController extends Controller
 
         if($validate){
             $location = new Location;
+            $location->image = $request->image;
             $location->country = $request->country;
             $location->place = $request->place;
             $location->price = $request->price;
@@ -49,6 +51,7 @@ class LocationController extends Controller
 
     public function editLocation($id, Request $request){
         $validate = $request->validate([
+            'image' => 'image | required',
             'country' => 'required | min: 4 | max: 255',
             'place' => 'required | min: 4 | max: 255',
             'price' => 'required | max: 5',
@@ -62,7 +65,8 @@ class LocationController extends Controller
         if($sessionValue){
             if($validate){
                 Location::where('id', $id)
-                        ->update(['country' => $request->country,
+                        ->update(['image' => $request->image,
+                                  'country' => $request->country,
                                   'place' => $request->place,
                                   'price' => $request->price,
                                   'days' => $request->days,

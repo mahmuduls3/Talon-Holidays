@@ -1,13 +1,20 @@
 @extends('index')
 
 @section('editLocation')
-    <form method="POST" class="ml-0 col-md-6 col-lg-6 col-sm-8 col-xs-12">
+    <form method="POST" enctype="multipart/form-data" class="ml-0 col-md-6 col-lg-6 col-sm-8 col-xs-12">
         <table class="table">
             @csrf       
             <tbody>
                 <tr>
                     <th scope="row">Id</th>
                     <td>{{$location->id}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Place Image</th>
+                    <td>
+                        <input type="file" name="image" class="form-control"  value="{{old('image')}}">
+						<span style="color: red;"> @error('image'){{$message}} @enderror </span>
+                    </td>
                 </tr>
                 <tr>
                     <th scope="row">Country</th>

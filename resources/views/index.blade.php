@@ -148,8 +148,13 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<form method="POST" action="{{route('addLocation')}}" class="ml-0 col-md-12 col-lg-12 col-sm-12 col-xs-12">
+					<form method="POST" action="{{route('addLocation')}}" enctype="multipart/form-data" class="ml-0 col-md-12 col-lg-12 col-sm-12 col-xs-12">
 					@csrf
+						<div class="form-group">
+							<label>Place Image</label>
+							<input type="file" name="image" class="form-control"  value="{{old('image')}}">
+							<span style="color: red;"> @error('image'){{$message}} @enderror </span>
+						</div>
 						<div class="form-group">
 							<label>Country</label>
 							<input type="text" name="country" class="form-control"  placeholder="Bangladesh" value="{{old('country')}}">

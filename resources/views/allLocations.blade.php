@@ -6,6 +6,7 @@
 		<thead class="thead-dark">
 		<tr>
 			<th scope="col">Id</th>
+			<th scope="col">Place Image</th>
 			<th scope="col">Counrty</th>
 			<th scope="col">Place</th>
 			<th scope="col">Price</th>
@@ -24,6 +25,7 @@
 		?>
 		<tr>
 			<td> {{$location->id}} </td>
+			<td> {{$location->image}} </td>
 			<td> {{$location->country}} </td>
 			<td> {{$location->place}} </td>
 			<td> {{$location->price}} </td>
