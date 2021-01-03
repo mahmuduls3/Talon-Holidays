@@ -6,28 +6,39 @@
 	<link rel="stylesheet" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
 </head>
 <body>
-	@if(session('user'))
+	
 	<div class="container">
-		<h4>Hello, {{session('user')}}</h4>
-		<a href="{{route('index')}}"><button class="btn btn-outline-primary mr-3 mt-3 mb-3 active">Home</button></a>
+		@if(session('user'))
+			<h4>Hello, {{session('user')}}</h4>
+		@endif
+		<a href="{{route('index')}}"><button class="btn btn-outline-primary mr-3 mt-3 mb-3">Home</button></a>
 		<a href="{{route('allStudents')}}"><button class="btn btn-outline-primary mr-3 mt-3 mb-3">All Students</button></a>
 		<button class="btn btn-outline-success mr-3 mt-3 mb-3"  data-toggle="modal" data-target="#add-student">Add Student</button>
-		<a href="{{route('allCountries')}}"><button class="btn btn-outline-primary mr-3 mt-3 mb-3">All Countries</button></a>
+		<a href="{{route('allAirports')}}"><button class="btn btn-outline-primary mr-3 mt-3 mb-3">All Airports</button></a>
 		<button class="btn btn-outline-success mr-3 mt-3 mb-3"  data-toggle="modal" data-target="#add-airport">Add Airport</button>
-		<button class="btn btn-outline-success mr-3 mt-3 mb-3"  data-toggle="modal" data-target="#add-location">Add Location</button>
 		<a href="{{route('allLocations')}}"><button class="btn btn-outline-primary mr-3 mt-3 mb-3">All Locations</button></a>
+		<button class="btn btn-outline-success mr-3 mt-3 mb-3"  data-toggle="modal" data-target="#add-location">Add Location</button>
 		<a href="{{route('logout')}}"><button class="btn btn-outline-secondary mr-3 mt-3 mb-3">Logout</button></a>
 	
-	@endif
-	@if(session('student'))
-		<h4 style="color: green">{{session('student')}} has been added</h4>
-	@endif
-	@if(session('airport_name'))
-		<h4 style="color: green">{{session('airport_name')}} has been added</h4>
-	@endif
+		@if(session('student'))
+			<h4 style="color: green">{{session('student')}} has been added</h4>
+		@endif
+		@if(session('airport_name'))
+			<h4 style="color: green">{{session('airport_name')}} has been added</h4>
+		@endif
+		@if(session('place'))
+			<h4 style="color: green">{{session('place')}} has been added</h4>
+		@endif
 
-	@yield('allLocations')
-	@yield('allStudents')
+		@yield('allLocations')
+		@yield('editLocation')
+		@yield('deleteLocation')
+		@yield('allStudents')
+		@yield('editStudent')
+		@yield('deleteStudent')
+		@yield('allAirports')
+		@yield('editAirport')
+		@yield('deleteAirport')
 
 	</div>
 

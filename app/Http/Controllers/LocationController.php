@@ -17,7 +17,7 @@ class LocationController extends Controller
     {
         $validate = $request->validate([
             'country' => 'required | min: 4 | max: 255',
-            'place' => 'required | min: 5 | max: 255',
+            'place' => 'required | min: 4 | max: 255',
             'price' => 'required | max: 5',
             'days' => 'required | max: 2',
             'nights' => 'required | max: 2',
@@ -33,7 +33,52 @@ class LocationController extends Controller
             $location->description = $request->description;
             $location->editedBy = $request->editedBy;
             $location->save();
+            $request->session()->flash('place', $location->place);
             return redirect()->route('allLocations');
         } 
+    }
+
+    public function editLocationIndex($id){
+        $location = Location::where('id', $id)->first();
+        return view('editLocation', ['location'=>$location]);
+    }
+
+    public function editLocation($id, Request $request){
+        $validate = $request->validate([
+            'country' => 'required | min: 4 | max: 255',
+            'place' => 'required | min: 4 | max: 255',
+            'price' => 'required | max: 5',
+            'days' => 'required | max: 2',
+            'nights' => 'required | max: 2',
+        ]);
+
+        $sessionValue = $request->session()->get('user');
+        if($sessionValue){
+            if($validate){
+                Location::where('id', $id)
+                        ->update(['country' => $request->country,
+                                  'place' => $request->place,
+                                  'price' => $request->price,
+                                  'days' => $request->days,
+                                  'nights' => $request->nights,
+                                  'editedBy' => $sessionValue
+                                ]);
+                return redirect()->route('allLocations');
+           }
+        } else {
+            echo "Session not found";
+        }
+        
+       
+    }
+
+    public function deleteLocationIndex($id){
+        $location = Location::where('id', $id)->first();
+        return view('deleteLocation', ['location'=>$location]);
+    }
+    
+    public function deleteLocation($id){
+        Location::where('id', $id)->delete();
+        return redirect()->route('allLocations');
     }
 }

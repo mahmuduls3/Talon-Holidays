@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
-use App\Http\Controllers\CountryController;
+use App\Http\Controllers\AirportController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LocationController;
 /*
@@ -42,17 +42,21 @@ Route::middleware(['Session'])->group(function(){
     Route::post('deleteStudent/{id}', [StudentController::class, 'delete'])->name('delete');
 
 
-    Route::get('allCountries', [CountryController::class, 'index'])->name('allCountries');
+    Route::get('allAirports', [AirportController::class, 'index'])->name('allAirports');
     //Route::view('addAirport', 'addAirport')->name('addAirportIndex');
-    Route::post('addAirport', [CountryController::class, 'addAirport'])->name('addAirport');
-    Route::get('editAirport/{id}', [CountryController::class, 'editAirportIndex'])->name('editAirportIndex');
-    Route::post('editAirport/{id}', [CountryController::class, 'editAirport'])->name('editAirport');
-    Route::get('deleteAirport/{id}', [CountryController::class, 'deleteAirportIndex'])->name('deleteAirportIndex');
-    Route::post('deleteAirport/{id}', [CountryController::class, 'deleteAirport'])->name('deleteAirport');
+    Route::post('addAirport', [AirportController::class, 'addAirport'])->name('addAirport');
+    Route::get('editAirport/{id}', [AirportController::class, 'editAirportIndex'])->name('editAirportIndex');
+    Route::post('editAirport/{id}', [AirportController::class, 'editAirport'])->name('editAirport');
+    Route::get('deleteAirport/{id}', [AirportController::class, 'deleteAirportIndex'])->name('deleteAirportIndex');
+    Route::post('deleteAirport/{id}', [AirportController::class, 'deleteAirport'])->name('deleteAirport');
 
 
     Route::get('allLocations', [LocationController::class, 'index'])->name('allLocations');
     Route::post('addLocation', [LocationController::class, 'addLocation'])->name('addLocation');
+    Route::get('editLocation/{id}', [LocationController::class, 'editLocationIndex'])->name('editLocationIndex');
+    Route::post('editLocation/{id}', [LocationController::class, 'editLocation'])->name('editLocation');
+    Route::get('deleteLocation/{id}', [LocationController::class, 'deleteLocationIndex'])->name('deleteLocationIndex');
+    Route::post('deleteLocation/{id}', [LocationController::class, 'deleteLocation'])->name('deleteLocation');
 });
 
 // Route::post('allStudent/search', [StudentController::class, 'search'])->name('search');

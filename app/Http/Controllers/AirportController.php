@@ -3,37 +3,36 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Country;
+use App\Models\Airport;
 
-class CountryController extends Controller
+class AirportController extends Controller
 {
     public function index()
     {
-        $countries = Country::all();
-        return view('allCountries', ['countries' => $countries]);
+        $airports = Airport::all();
+        return view('allAirports', ['airports' => $airports]);
     }
 
     public function addAirport(Request $request)
     {
-        
         $validate = $request->validate([
             'country_name' => 'required | min: 4 | max: 255',
             'airport_name' => 'required | min: 4 | max: 255',
         ]);
             
         if($validate){
-            $country = new Country;
-            $country->country_name = $request->country_name;
-            $country->airport_name = $request->airport_name;
-            $country->save();
-            $request->session()->flash('airport_name', $country->airport_name);
-            return redirect()->route('allCountries');
+            $airport = new Airport;
+            $airport->country_name = $request->country_name;
+            $airport->airport_name = $request->airport_name;
+            $airport->save();
+            $request->session()->flash('airport_name', $airport->airport_name);
+            return redirect()->route('allAirports');
         } 
     }
 
     public function editAirportIndex($id){
-        $country = Country::where('id', $id)->first();
-        return view('editAirport', ['country'=>$country]);
+        $airport = Airport::where('id', $id)->first();
+        return view('editAirport', ['airport'=>$airport]);
     }
     
     public function editAirport($id, Request $request){
@@ -43,21 +42,21 @@ class CountryController extends Controller
         ]);
         
        if($validate){
-            Country::where('id', $id)
+            Airport::where('id', $id)
                     ->update(['country_name' => $request->country_name,
                                 'airport_name' => $request->airport_name,
                             ]);
-            return redirect()->route('allCountries');
+            return redirect()->route('allAirports');
        }
     }
 
     public function deleteAirportIndex($id){
-        $country = Country::where('id', $id)->first();
-        return view('deleteAirport', ['country'=>$country]);
+        $airport = Airport::where('id', $id)->first();
+        return view('deleteAirport', ['airport'=>$airport]);
     }
     
     public function deleteAirport($id){
-        Country::where('id', $id)->delete();
-        return redirect()->route('allCountries');
+        Airport::where('id', $id)->delete();
+        return redirect()->route('allAirports');
     }
 }
