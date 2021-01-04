@@ -151,7 +151,7 @@
 					<form method="POST" action="{{route('addLocation')}}" enctype="multipart/form-data" class="ml-0 col-md-12 col-lg-12 col-sm-12 col-xs-12">
 					@csrf
 						<div class="form-group">
-							<label>Place Image</label>
+							<label>Place Image (Recommended size: 700 x 460)</label>
 							<input type="file" name="image" class="form-control"  value="{{old('image')}}">
 							<span style="color: red;"> @error('image'){{$message}} @enderror </span>
 						</div>

@@ -10,7 +10,7 @@
                     <td>{{$location->id}}</td>
                 </tr>
                 <tr>
-                    <th scope="row">Place Image</th>
+                    <th scope="row">Place Image (Recommended size: 700 x 460)</th>
                     <td>
                         <input type="file" name="image" class="form-control"  value="{{old('image')}}">
 						<span style="color: red;"> @error('image'){{$message}} @enderror </span>

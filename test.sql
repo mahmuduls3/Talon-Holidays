@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2021 at 05:25 AM
+-- Generation Time: Jan 04, 2021 at 09:38 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -266,7 +266,7 @@ INSERT INTO `employees` (`id`, `name`, `email`, `phone`, `salary`, `department`,
 (200, 'Raleigh Ledner', 'trycia.hackett@batz.com', '(380) 292-3383 x1921', '36360', 'Marketing', '2020-11-16 00:44:27', '2020-11-16 00:44:27'),
 (201, 'Himel Hossain', 'himel@gmail.com', '01777397888', '35000', 'Marketing', '2020-11-17 00:26:31', '2020-12-14 03:26:28'),
 (202, 'Mahmudul Hossain', 'mahmudulhossain786@gmail.com', '01756102305', '35000', 'IT', '2020-11-17 00:28:43', '2020-12-14 03:24:50'),
-(203, 'Sahil Aziz', 'sahilaziz@gmail.com', '01710102300', '32000', 'Quality', '2020-12-13 23:31:28', '2020-12-14 03:24:36');
+(203, 'Sahil Aziz', 'sahilaziz@gmail.com', '01710102300', '30000', 'Quality', '2020-12-13 23:31:28', '2021-01-03 01:29:48');
 
 -- --------------------------------------------------------
 
@@ -292,13 +292,16 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `locations` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `country` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `place` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` int(10) UNSIGNED NOT NULL,
   `days` int(10) UNSIGNED NOT NULL,
   `nights` int(10) UNSIGNED NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `editedBy` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `package` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `editedBy` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -325,7 +328,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2020_11_16_060009_create_employees_table', 1),
 (5, '2020_12_26_043535_create_countries_table', 2),
-(7, '2020_12_28_044316_create_locations_table', 3);
+(9, '2020_12_28_044316_create_locations_table', 3);
 
 -- --------------------------------------------------------
 
@@ -443,7 +446,7 @@ ALTER TABLE `locations`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`

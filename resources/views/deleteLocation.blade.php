@@ -10,7 +10,7 @@
                         <td>{{$location->id}}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Country</th>
+                        <th scope="row">Place Image</th>
                         <td>{{$location->image}}</td>
                         
                     </tr>
