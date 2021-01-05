@@ -32,6 +32,8 @@ Route::middleware(['Session'])->group(function(){
     })->name('logout');
 
     Route::view('index', 'index')->name('index');
+    Route::get('editProfile/{id}', [UserController::class, 'editProfileIndex'])->name('editProfileIndex');
+    Route::post('editProfile/{id}', [UserController::class, 'editProfile'])->name('editProfile');
     
     Route::get('allStudents', [StudentController::class, 'index'])->name('allStudents');
     Route::view('addStudent', 'addStudent')->name('addStudent');

@@ -23,8 +23,8 @@
 			<td> {{$airport->created_at}} </td>
 			<td> {{$airport->updated_at}} </td>
 			<td>
-			<a href="{{route('editAirportIndex', $airport->id)}}"><button class="btn btn-outline-primary">Edit</button></a>
-			<a href="{{route('deleteAirportIndex', $airport->id)}}"><button class="btn btn-outline-danger">Delete</button></a>
+			<a href="{{route('editAirport', $airport->id)}}"><button class="btn btn-outline-warning">Edit</button></a>
+			<a href="{{route('deleteAirport', $airport->id)}}"><button class="btn btn-outline-danger">Delete</button></a>
 			</td>
 		</tr>
 			<?php 

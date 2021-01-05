@@ -14,14 +14,17 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => $request->password
         ];
+        
         $user = User::where($match)
                     ->get()->first();
+
         if($user){
-            $request->session()->put('user', $request->email);
+            $request->session()->put('user', $user);
             return redirect()->route('index');
         } else {
-            $request->session()->flash('loginError');
-            return redirect()->route('loginIndex');
+            // $request->session()->flash('loginError');
+            // return redirect()->route('loginIndex');
+            echo "Login error";
         }
         // --For Query Builder-- //
         // $user = DB::table('users')
@@ -54,7 +57,25 @@ class UserController extends Controller
             $request->session()->flash('newUser', $request->name);
             return redirect()->route('loginIndex');    
         }
+    }
 
-        
+    public function editProfileIndex($id){
+        $user = User::where('id', $id)->first();
+        return view('editProfile', ['user'=>$user]);
+    }
+
+    public function editProfile($id, Request $request){
+        $validate = $request->validate([
+            'name' => 'required | min: 4 | max: 255',
+            'password' => 'required | min: 5 | confirmed',
+        ]);
+
+        if ($validate){
+            User::where('id', $id)
+                ->update(['name' => $request->name,
+                              'password' => $request->password,
+                        ]);
+            return redirect()->route('index');
+        }
     }
 }

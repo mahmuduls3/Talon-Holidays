@@ -29,11 +29,8 @@
                 <td> {{$student->created_at}} </td>
                 <td> {{$student->updated_at}} </td>
                 <td>
-
-                    <a href="{{route('editStudent', $student->id)}}"><button
-                            class="btn btn-outline-primary">Edit</button></a>
-                    <a href="{{route('deleteStudent', $student->id)}}"><button
-                            class="btn btn-outline-danger">Delete</button></a>
+                    <a href="{{route('editStudent', $student->id)}}"><button class="btn btn-outline-warning">Edit</button></a>
+                    <a href="{{route('deleteStudent', $student->id)}}"><button class="btn btn-outline-danger">Delete</button></a>
                 </td>
             </tr>
             <?php 

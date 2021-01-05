@@ -9,8 +9,8 @@
 	
 	<div class="container">
 		@if(session('user'))
-			<h4>Hello, {{session('user')}}</h4>
-		@endif
+			<h4>Hello, {{session('user')['name']}}</h4>
+		
 		<a href="{{route('index')}}"><button class="btn btn-outline-primary mr-3 mt-3 mb-3">Home</button></a>
 		<a href="{{route('allStudents')}}"><button class="btn btn-outline-primary mr-3 mt-3 mb-3">All Students</button></a>
 		<button class="btn btn-outline-success mr-3 mt-3 mb-3"  data-toggle="modal" data-target="#add-student">Add Student</button>
@@ -18,8 +18,11 @@
 		<button class="btn btn-outline-success mr-3 mt-3 mb-3"  data-toggle="modal" data-target="#add-airport">Add Airport</button>
 		<a href="{{route('allLocations')}}"><button class="btn btn-outline-primary mr-3 mt-3 mb-3">All Locations</button></a>
 		<button class="btn btn-outline-success mr-3 mt-3 mb-3"  data-toggle="modal" data-target="#add-location">Add Location</button>
+		<a href="{{route('editProfile', session('user')['id'])}}"><button class="btn btn-outline-warning mr-3 mt-3 mb-3">Edit Profile</button></a>
 		<a href="{{route('logout')}}"><button class="btn btn-outline-secondary mr-3 mt-3 mb-3">Logout</button></a>
-	
+
+		@endif
+
 		@if(session('student'))
 			<h4 style="color: green">{{session('student')}} has been added</h4>
 		@endif
@@ -29,6 +32,8 @@
 		@if(session('place'))
 			<h4 style="color: green">{{session('place')}} has been added</h4>
 		@endif
+
+		@yield('editProfile')
 
 		@yield('allLocations')
 		@yield('editLocation')

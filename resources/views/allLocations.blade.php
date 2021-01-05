@@ -36,8 +36,8 @@
 			<td> {{$location->status}} </td>
 			<td> {{$location->editedBy}} </td>
 			<td>
-				<a href="{{route('editLocationIndex', $location->id)}}"><button class="btn btn-outline-primary">Edit</button></a>
-				<a href="{{route('deleteLocationIndex', $location->id)}}"><button class="btn btn-outline-danger">Delete</button></a>
+				<a href="{{route('editLocation', $location->id)}}"><button class="btn btn-outline-warning">Edit</button></a>
+				<a href="{{route('deleteLocation', $location->id)}}"><button class="btn btn-outline-danger">Delete</button></a>
 			</td>
 		</tr>
 			<?php 

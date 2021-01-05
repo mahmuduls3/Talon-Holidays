@@ -96,7 +96,6 @@ class LocationController extends Controller
                 echo "Session not found";
             }
         }
-         
     }
 
     public function deleteLocationIndex($id){

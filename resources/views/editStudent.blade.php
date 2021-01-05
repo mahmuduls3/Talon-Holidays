@@ -63,7 +63,7 @@
             </tbody>
         </table>
         <div>
-            <button type="submit" class="btn btn-outline-success mr-3">Update</button></a>
+            <button type="submit" class="btn btn-outline-warning mr-3">Update</button></a>
         </div>
     </form>
 @endsection
